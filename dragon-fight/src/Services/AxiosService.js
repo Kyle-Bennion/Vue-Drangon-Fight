@@ -1,6 +1,6 @@
 import Axios from "axios";
 
 export const api = Axios.create({
-  baseURL: '//bcw-sandbox.herokuapp.com/api/champions',
+  baseURL: 'https://drag-vs-champ.herokuapp.com/api',
   timeout: 3000
 })
