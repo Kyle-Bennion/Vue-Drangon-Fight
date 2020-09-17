@@ -1,18 +1,18 @@
 <template>
   <div class="col-6 p-2">
     <div class="card">
-      <img :src="championData.imgUrl" alt />
-      <h1>{{championData.name}}</h1>
+      <img :src="dragonData.imgUrl" alt />
+      <h1>{{dragonData.name}}</h1>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "champion",
-  props: { championData: { type: Object, required: true } },
+  name: "dragon",
+  props: { dragonData: { type: Object, required: true } },
   mounted() {
-    console.log(championData);
+    console.log(dragonData);
   },
 };
 </script>

@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <champions />
+    <div class="container-fluid">
+      <div class="row">
+        <champions />
+        <dragons />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import champions from "./Pages/Champions";
-
+import champions from "./Pages/Champions.vue";
+import dragons from "./Pages/Dragons.vue";
 export default {
   name: "App",
   components: {
     champions,
+    dragons,
   },
 };
 </script>
