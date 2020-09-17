@@ -2,11 +2,13 @@
   <div id="app">
     <div class="container-fluid">
       <a name id="fight" class="btn btn-primary" role="button" @click="startFight">Fight</a>
-      <div class="row" :class="{start: game.id}">
+      <div class="row" :class="{start: games.id}">
         <champions />
         <dragons />
       </div>
-      <div class="row" :class="{start: !game.id}"></div>
+      <div class="row" :class="{start: !games.id}">
+        <game />
+      </div>
     </div>
   </div>
 </template>
@@ -14,11 +16,13 @@
 <script>
 import champions from "./Pages/Champions.vue";
 import dragons from "./Pages/Dragons.vue";
+import game from "./Pages/Game.vue";
 export default {
   name: "App",
   components: {
     champions,
     dragons,
+    game,
   },
   methods: {
     startFight() {
@@ -26,7 +30,7 @@ export default {
     },
   },
   computed: {
-    game() {
+    games() {
       return this.$store.state.activeGame;
     },
   },
