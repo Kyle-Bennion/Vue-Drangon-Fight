@@ -1,6 +1,6 @@
 <template>
-  <div class="col-6 p-2">
-    <div class="card">
+  <div class="col-6 p-2" :id="dragonData.id" :class="{active: activeDragonCard==dragonData.id}">
+    <div class="card" @click="setActiveDragon">
       <img :src="dragonData.imgUrl" alt />
       <h1>{{dragonData.name}}</h1>
     </div>
@@ -11,6 +11,19 @@
 export default {
   name: "dragon",
   props: { dragonData: { type: Object, required: true } },
+  data() {
+    return { newDragon: {} };
+  },
+  methods: {
+    setActiveDragon() {
+      this.$store.dispatch("setActiveDragon", this.dragonData.id);
+    },
+  },
+  computed: {
+    activeDragonCard() {
+      return this.$store.state.activeDragon;
+    },
+  },
 };
 </script>
 
@@ -18,5 +31,8 @@ export default {
 img {
   max-width: auto;
   max-height: 30vh;
+}
+.active {
+  background-color: blue;
 }
 </style>

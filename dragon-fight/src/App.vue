@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <div class="container-fluid">
-      <div class="row">
+      <a name id="fight" class="btn btn-primary" role="button" @click="startFight">Fight</a>
+      <div class="row" :class="{start: game.id}">
         <champions />
         <dragons />
       </div>
+      <div class="row" :class="{start: !game.id}"></div>
     </div>
   </div>
 </template>
@@ -18,6 +20,16 @@ export default {
     champions,
     dragons,
   },
+  methods: {
+    startFight() {
+      this.$store.dispatch("startFight");
+    },
+  },
+  computed: {
+    game() {
+      return this.$store.state.activeGame;
+    },
+  },
 };
 </script>
 
@@ -29,5 +41,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.start {
+  display: none;
 }
 </style>
