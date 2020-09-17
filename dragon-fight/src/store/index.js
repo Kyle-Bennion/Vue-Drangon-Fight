@@ -28,11 +28,13 @@ export default new Vuex.Store({
       console.log(state.activeChampion);
     },
     startFight(state, game) {
-      state.activeGame = game
+      state.activeGame = game.data
       console.log(game);
     },
     findDragon(state, dragon) {
-      return state.dragons.filter(d => d.id == dragon)
+      let res = state.dragons.filter(d => d.id == dragon)
+      return res[0]
+
     },
     findChampion(state, champion) {
       return state.champions.filter(c => c.id == champion)
@@ -57,7 +59,10 @@ export default new Vuex.Store({
     },
     async startFight({ commit }) {
       let res = await api.post("/games", { dragon: this.state.activeDragon, champion: this.state.activeChampion })
-      commit("startFight", res.data)
+      let data = "/games/" + res.data.id
+      let game = await api.get(data)
+      commit("startFight", game)
+      console.log(game)
     },
     setActiveChampion({ commit }, champion) {
       commit("setActiveChampion", champion)

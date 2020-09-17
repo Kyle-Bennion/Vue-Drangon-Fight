@@ -1,8 +1,21 @@
 <template>
-  <div class="row">
-    <h1>{{games.id}}</h1>
-    <h1>{{hero.name}}</h1>
-    <h1>{{villan.name}}</h1>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-5">
+        <div class="card p-1">
+          <img :src="games.champion.imgUrl" alt />
+          <h1>{{games.champion.name}}</h1>
+          <h6>{{games.champion.health}}</h6>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="card p-1">
+          <img :src="games.dragon.imgUrl" alt />
+          <h1>{{games.dragon.name}}</h1>
+          <h6>{{games.dragon.health}}</h6>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,15 +26,12 @@ export default {
     games() {
       return this.$store.state.activeGame;
     },
-    hero() {
-      return this.$store.dispatch("findChampion", game.champion);
-    },
-    villan() {
-      return this.$store.dispatch("findDragon", game.dragon);
-    },
   },
 };
 </script>
 
-<style>
+<style scoped>
+img {
+  max-height: 30vh;
+}
 </style>
