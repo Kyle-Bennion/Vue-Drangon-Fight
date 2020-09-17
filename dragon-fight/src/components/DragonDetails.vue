@@ -11,9 +11,6 @@
 export default {
   name: "dragon",
   props: { dragonData: { type: Object, required: true } },
-  mounted() {
-    console.log(dragonData);
-  },
 };
 </script>
 

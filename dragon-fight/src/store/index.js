@@ -7,16 +7,24 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     champions: [],
-    dragons: []
+    dragons: [],
+    activeChampion: {},
+    activeDragon: {},
+    activeGame: {}
   },
   mutations: {
     setChampions(state, champions) {
       state.champions = champions
-      console.log(state.champions);
     },
     setDragons(state, dragons) {
       state.dragons = dragons
-      console.log(state.dragons);
+    },
+    setActiveDragons(state, dragons) {
+      state.activeDragon = dragons
+    },
+    setActiveChampion(state, champions) {
+      state.activeChampion = champions
+      console.log(state.activeChampion);
     }
   },
   actions: {
@@ -35,6 +43,9 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
+    },
+    setActiveChampion({ commit }, champion) {
+      commit("setActiveChampion", champion)
     }
   },
   modules: {

@@ -1,6 +1,6 @@
 <template>
   <div class="col-6 p-2">
-    <div class="card">
+    <div class="card" @click="setActiveChampion">
       <img :src="championData.imgUrl" alt />
       <h1>{{championData.name}}</h1>
     </div>
@@ -11,8 +11,14 @@
 export default {
   name: "champion",
   props: { championData: { type: Object, required: true } },
-  mounted() {
-    console.log(championData);
+  data() {
+    return { newChampion: {} };
+  },
+  methods: {
+    setActiveChampion() {
+      this.$store.dispatch("setActiveChampion", this.newChampion);
+      console.log("details");
+    },
   },
 };
 </script>
